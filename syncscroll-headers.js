@@ -18,12 +18,9 @@ $(window).on('resize',function() {
         // Set table widths
         headerDiv.find('table').eq(0).width(tableDiv.find('table').eq(0).width());
 
-        // Hide placeholder header
-        tableDiv.find('tr').eq(0).hide()
-
         // Resize header tags to match
         let headers = headerDiv.find('th');
-        tableDiv.find('tr').eq(1).children().each(function (index, cell) {
+        tableDiv.find('tr').eq(0).children().each(function (index, cell) {
             headers.eq(index).width($(this).width())
         });
       });
