@@ -15,7 +15,7 @@
     createStickyHeaders();
     resetSyncElements();
 
-    $(window).on('resize', function () {
+    $(window).on("resize", function () {
         syncHeaders();
     });
     $(document).ready(function () {
@@ -32,8 +32,8 @@
     }
     
     function setSyncElements() {
-        $('[class*="syncscroll sync-name-"]').each(function (i, thing) {
-            var fullClassName = $(this).attr('class');
+        $("[class*=\"syncscroll sync-name-\"]").each(function (i, thing) {
+            var fullClassName = $(this).attr("class");
             var classInstancesArrayLength = (fullClassName in scrollableDivsByClass ? scrollableDivsByClass[fullClassName].length : 0);
             if (classInstancesArrayLength === 0)
                 scrollableDivsByClass[fullClassName] = [];
@@ -48,9 +48,9 @@
             
             var elem = scrollableDivsByClass[key][0];
             if(elem.parent(".table").length === 1) {
-                var headersClones = elem.find('tr').eq(0).clone()
+                var headersClones = elem.find("tr").eq(0).clone()
                 var parentDiv = elem.parent(".table").eq(0).prepend("<div class=\""+key+"\" style=\"overflow-x: hidden; position: sticky; top: 50px;\"><table><tbody></tbody></table></div>")
-                parentDiv.find('tbody').eq(0).prepend(headersClones)
+                parentDiv.find("tbody").eq(0).prepend(headersClones)
             }
         });
     }
@@ -64,16 +64,16 @@
             var syncscrollTableDiv = scrollableDivsByClass[key][1];
 
             // Set table widths
-            syncscrollTableHeaderDiv.find('table').eq(0).width(syncscrollTableDiv.find('table').eq(0).width());
+            syncscrollTableHeaderDiv.find("table").eq(0).width(syncscrollTableDiv.find("table").eq(0).width());
 
             // Resize header tags to match
-            var syncscrollTableHeaders = syncscrollTableHeaderDiv.find('th');
-            syncscrollTableDiv.find('tr').eq(0).children().each(function (index, cell) {
+            var syncscrollTableHeaders = syncscrollTableHeaderDiv.find("th");
+            syncscrollTableDiv.find("tr").eq(0).children().each(function (index, cell) {
                 syncscrollTableHeaders.eq(index).width($(this).width())
             });
 
             // Setup scroll events for syncing scroll positions
-            syncscrollTableDiv.on('scroll', function() {
+            syncscrollTableDiv.on("scroll", function() {
                 syncscrollTableHeaderDiv.scrollLeft($(this).scrollLeft());
             }); 
         });
