@@ -49,7 +49,7 @@
             var elem = scrollableDivsByClass[key][0];
             if(elem.parent(".table").length === 1) {
                 var headersClones = elem.find("tr").eq(0).clone()
-                var parentDiv = elem.parent(".table").eq(0).prepend("<div class=\""+key+"\" style=\"overflow-x: hidden; position: sticky; top: 50px;\"><table><tbody></tbody></table></div>")
+                var parentDiv = elem.parent(".table").eq(0).prepend("<div class=\""+key+"\"><table><tbody></tbody></table></div>")
                 parentDiv.find("tbody").eq(0).prepend(headersClones)
             }
         });
