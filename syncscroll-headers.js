@@ -11,14 +11,14 @@
 	}
 }(function( $ ) {
     var scrollableDivsByClass = {};
-    setSyncElements();
-    createStickyHeaders();
-    resetSyncElements();
 
     $(window).on("resize", function () {
         syncHeaders();
     });
     $(document).ready(function () {
+        setSyncElements();
+        createStickyHeaders();
+        resetSyncElements();
         syncHeaders();
     });
 
